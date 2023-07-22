@@ -21,11 +21,11 @@
 
 <body>
     <div class="container">
-        <label for="column_count">Enter Column Number</label>
+        <label for="column_count">Enter Number</label>
         <input type="number" name="" id="column_count">
         <button onclick="generate_column()">Generate Column</button>
 
-        <table id="my_table">
+        <table id="my_table" border="1">
 
         </table>
     </div>
@@ -35,11 +35,16 @@
             my_table.innerHTML = "";
             const column_count = Number(document.getElementById("column_count").value);
 
-            tr = document.createElement("tr");
-            my_table.appendChild(tr);
-            td = document.createElement("td");
-            td.innerText = "i am created by JavaScript";
-            tr.appendChild(td);
+            for(let i = 1; i <= column_count; i++){
+                row = document.createElement("tr");
+                my_table.appendChild(row);
+                for(let j = 1; j <= column_count; j++){
+                    column = document.createElement("td");
+                    column.innerText = 'Created by JavaScript';
+                    column.classList.add("my_td");
+                    row.appendChild(column);
+                }
+            }
         }
 
 

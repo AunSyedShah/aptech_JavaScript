@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <table border="1">
+                <tr>
+                    <td>User ID</td>
+                    <td>ID</td>
+                    <td>Title</td>
+                    <td>Completed</td>
+                </tr>
+                <tr id="content">
+
+                </tr>
+            </table>
+        </div>
+        <button onclick="get_data()">Show Data</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function get_data() {
+            axios.get("https://jsonplaceholder.typicode.com/todos/1").then(
+                function (response) {
+                    const response_data = response.data;
+                    let tr_element = document.getElementById("content");
+                    for (key in response_data) {
+                        const td_element = document.createElement("td");
+                        td_element.innerText = response_data[key];
+                        tr_element.appendChild(td_element);
+                    }
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
